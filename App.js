@@ -26,7 +26,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="List" component={List} />
         <Stack.Screen name="Create" component={Create} />
-        <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Detail" component={Detail} options={({ route }) => ({ title: route.params.title })} />
       </Stack.Navigator>
     </NavigationContainer>
   );

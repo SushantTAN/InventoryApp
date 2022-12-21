@@ -1,3 +1,5 @@
+import AsyncStorage from "@react-native-community/async-storage";
+import { useLinkProps } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Text, ScrollView, TextInput, TouchableOpacity, Image, useWindowDimensions } from "react-native";
 
@@ -8,7 +10,7 @@ import { styles } from "../../styles/create";
 import CustomButton from "../elements/CustomButton";
 import AppLayout from "../layouts/AppLayout";
 
-const Create = () => {
+const Create = (props) => {
 
   const { height, width } = useWindowDimensions();
 
@@ -80,8 +82,28 @@ const Create = () => {
     })
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
 
+    try {
+      let currentList = await AsyncStorage.getItem("inventoryapp_list");
+
+      let newList = [];
+
+      if (currentList) {
+        console.log("test", currentList);
+        let currentJson = await JSON.parse(currentList);
+        newList = [...currentJson, formData];
+      } else {
+        newList = [formData];
+      }
+
+      await AsyncStorage.setItem("inventoryapp_list", JSON.stringify(newList));
+      console.log("end", newList);
+
+      props.navigation.goBack();
+    } catch (err) {
+      console.log("error", err)
+    }
   }
 
   return (
