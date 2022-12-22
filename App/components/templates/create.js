@@ -66,12 +66,10 @@ const Create = (props) => {
     }
 
     launchImageLibrary(options, (res) => {
-      console.log(res)
-
       if (res.didCancel) {
-        console.log('User cancelled image picker');
+        // console.log('User cancelled image picker');
       } else if (res.errorMessage) {
-        console.log('ImagePicker Error: ', res.errorMessage);
+        // console.log('ImagePicker Error: ', res.errorMessage);
       } else {
         let source = res;
         // this.setState({
@@ -90,7 +88,6 @@ const Create = (props) => {
       let newList = [];
 
       if (currentList) {
-        console.log("test", currentList);
         let currentJson = await JSON.parse(currentList);
         newList = [...currentJson, formData];
       } else {
@@ -98,7 +95,6 @@ const Create = (props) => {
       }
 
       await AsyncStorage.setItem("inventoryapp_list", JSON.stringify(newList));
-      console.log("end", newList);
 
       props.navigation.goBack();
     } catch (err) {
