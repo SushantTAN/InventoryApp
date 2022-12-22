@@ -24,7 +24,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="List" component={List} />
+        <Stack.Screen name="List" component={List} options={{ title: 'Inventory App' }} />
         <Stack.Screen name="Create" component={Create} />
         <Stack.Screen name="Detail" component={Detail} options={({ route }) => ({ title: route.params.title })} />
       </Stack.Navigator>

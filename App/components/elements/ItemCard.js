@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
-import { Image, TouchableOpacity, View, Text, useWindowDimensions } from "react-native";
+import { Image, TouchableOpacity, View, Text } from "react-native";
 import { styles } from "../../styles/list";
 import { ListContext } from "../templates/list";
 import CustomButton from "./CustomButton";
@@ -10,7 +10,6 @@ import CustomButton from "./CustomButton";
 export default ItemCard = (props) => {
 
   const { description, image, title } = props.data;
-  const { height, width } = useWindowDimensions();
 
   const listContext = useContext(ListContext);
 
@@ -50,7 +49,7 @@ export default ItemCard = (props) => {
   return (
     <TouchableOpacity style={[styles.row, styles.itemContainer]} onPress={handlePress}>
       {image.assets.map((item, index) => <Image
-        style={[styles.image, { width: width - 32 }]}
+        style={[styles.image,]}
         source={{ uri: item.uri }}
         key={index}
       />)}

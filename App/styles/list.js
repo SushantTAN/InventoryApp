@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 88,
+    aspectRatio: 16 / 9,
     flex: 0.45,
     borderRadius: 16,
     marginRight: 12

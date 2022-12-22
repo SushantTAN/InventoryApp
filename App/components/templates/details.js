@@ -1,17 +1,17 @@
 import React from "react";
-import { View, Text, Image, useWindowDimensions } from "react-native";
+import { Text, Image } from "react-native";
 
-import { styles } from "../../styles/detail";
 import AppLayout from "../layouts/AppLayout";
+import { styles } from "../../styles/detail";
+
 
 const Detail = (props) => {
   const { description, image, title } = props.route.params.data;
-  const { height, width } = useWindowDimensions();
 
   return (
     <AppLayout>
       {image.assets.map((item, index) => <Image
-        style={[styles.image, { width: width - 32 }]}
+        style={[styles.image]}
         source={{ uri: item.uri }}
         key={index}
       />)}
